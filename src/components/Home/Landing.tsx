@@ -155,7 +155,7 @@ const Landing: React.FC = () => {
 
         {/* Refresh Button */}
         <div className="sm:mt-11 z-99999 sm:z-9 -mt-[483px]">
-          <li title="Reload content" className="sticky top-0 sm:relative">
+          <li title="Back" className="sticky top-0 sm:relative">
             <Link
               onClick={() => {
                 setRefreshKey((prevKey) => prevKey + 1);

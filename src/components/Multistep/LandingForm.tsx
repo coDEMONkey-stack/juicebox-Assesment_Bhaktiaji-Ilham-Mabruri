@@ -56,9 +56,9 @@ const LandingForm: React.FC = () => {
             <div className="flex z-999999 mt-24 px-3 sm:px-49 justify-between sm:gap-2 gap-2">
                 {/* Back Button */}
                     <div className="sm:mt-1 z-99999 sm:z-9 -mt-[327px]">
-                        <li title="Reload content" className="top-0 z-99999 sticky sm:relative">
+                        <li title="Back" className="top-0 z-99999 sticky sm:relative">
                             <Link
-                            href="/stepone"
+                            href="/walkthrough"
                             className="relative flex h-12 w-12 sm:h-17 sm:w-17 items-center justify-center rounded-full border-none bg-[#191a1d]"
                             >
                                 <svg
