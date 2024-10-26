@@ -33,6 +33,7 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) 
             setErrorMessage("");
         }
     };
+    const isDisabled = !!errorMessage; 
 
     // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     //     event.preventDefault();
@@ -53,10 +54,9 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) 
                     onChange={handleInputChange}
                     value={inputValue}
                 />
-                <Link href={nextPage} passHref>
+                <Link href={isDisabled ? "#" : nextPage} passHref>
                     <span className="relative sm:right-16 right-12.5 top-1/2 flex justify-center items-center">
-                        <div className="relative sm:w-[50px] sm:h-[50px] w-[30px] h-[30px] cursor-pointer"
-                            >
+                        <div className={`relative sm:w-[50px] sm:h-[50px] w-[30px] h-[30px] ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                             <Image
                                 className="object-contain"
                                 src={inputValue ? "/images/icon/send-active.svg" : "/images/icon/send-inactive.svg"}
