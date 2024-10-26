@@ -6,7 +6,8 @@
                                          |_|                                   |__/                                    
 
 
-This is an Assesment to apply a job at Juicebox. Developed by Bhaktiaji Ilham
+This is an assessment for applying for a job at Juicebox. Developed by Bhaktiaji Ilham.
+
 
 I. Tech Stack:
 - ReactJS
