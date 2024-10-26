@@ -1,4 +1,3 @@
-// Transition.tsx
 import { useState, useEffect } from "react";
 import styles from "./Transition.module.css";
 

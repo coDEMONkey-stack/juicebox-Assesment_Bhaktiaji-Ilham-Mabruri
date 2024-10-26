@@ -31,7 +31,6 @@ const LandingSlider: React.FC = () => {
       },
     });
 
-    // Cleanup on unmount
     return () => splitText.revert();
   }, [refreshKey]);
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import ClickOutside from "@/components/ClickOutside";
-// import IconBack from "../../../public/images/icon/icon-arrowleft.svg"
 
 const RefreshButton = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
