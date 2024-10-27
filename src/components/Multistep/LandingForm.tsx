@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useContext } from "react";
 import Link from "next/link";
 import { gsap } from "gsap-trial";
 import { SplitText } from "gsap-trial/SplitText";
@@ -11,6 +11,7 @@ import FormLayout from "../Form/FormLayout";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const LandingForm: React.FC = () => {
+    const [inputValue, setInputValue] = useState('');
     const [refreshKey, setRefreshKey] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const splitTextRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,10 @@ const LandingForm: React.FC = () => {
             },
         });
     }, [refreshKey]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+    };
 
     return (
         <>
@@ -121,6 +126,8 @@ const LandingForm: React.FC = () => {
             <div className="mt-11">
                 <FormLayout 
                     type="text"
+                    value={inputValue}
+                    onChange={setInputValue}
                     placeholder="Enter your name" 
                     nextPage="/steptwo" 
                 />

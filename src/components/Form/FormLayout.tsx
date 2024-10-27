@@ -1,20 +1,31 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useDataContext } from "@/components/Form/NameContext";
+
 
 interface FormLayoutProps {
     type: string;
+    value?: string;
     placeholder: string;
+    onChange?: (value: string) => void;
     nextPage: string;
 }
 
-const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) => {
+const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage, onChange }) => {
+    const { setName } = useDataContext();
     const [inputValue, setInputValue] = useState("");
+    // const { name, setName } = useDataContext(), [inputValue, setInputValue] = useState<string>(name);
     const [errorMessage, setErrorMessage] = useState("");
+ 
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        setInputValue(value);
+        setInputValue(value); 
+
+        if (type === "text") {
+            setName(value);
+        }
         validateInput(value);
     };
 
@@ -25,6 +36,8 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) 
             setErrorMessage("Input can only contain letters.");
         } else if (type === "text" && value.length < 3) {
             setErrorMessage("Input must be at least 3 characters.");
+        } else if (type === "text" && value.length > 15) {
+            setErrorMessage("Input must be max 15 characters long.");
         } else if (type === "email" && !/^[\w.+-]+@[\w-]+\.[a-zA-Z]{2,}$/.test(value)) {
             setErrorMessage("Please enter a valid email address.");
         } else if (type === "email" && value.length < 5) {
@@ -33,15 +46,8 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) 
             setErrorMessage("");
         }
     };
-    const isDisabled = !!errorMessage; 
 
-    // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //     if (type === "text" && onSubmit) {
-    //         onSubmit(inputValue);
-    //         localStorage.setItem("userInput", inputValue);
-    //     }
-    // };
+    const isDisabled = !!errorMessage; 
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -68,9 +74,10 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage }) 
                     </span>
                 </Link>
             </div>
+            <p>{type === "text" ? inputValue : ''}</p>
             <div className="relative px-8 sm:px-50">
                 {errorMessage && (
-                    <p className="text-red sm:-mt-8 -mt-10 text-md sm:text-xl">{errorMessage}</p>
+                    <p className="text-red sm:-mt-13 -mt-10 text-md sm:text-xl">{errorMessage}</p>
                 )}
             </div>
         </form>

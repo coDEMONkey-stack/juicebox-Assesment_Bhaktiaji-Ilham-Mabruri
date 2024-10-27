@@ -8,6 +8,7 @@ import Image from "next/image";
 import "../../css/style.css";
 import FormLayout from "../Form/FormLayout";
 
+
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
     const LandingFormSecond: React.FC = () => {

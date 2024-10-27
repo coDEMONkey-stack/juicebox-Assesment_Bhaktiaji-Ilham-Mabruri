@@ -1,26 +1,30 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState, ReactNode, useContext } from "react";
 
-interface NameContextType {
+interface DataContextType {
   name: string;
-  setName: (name: string) => void;
+  setName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const NameContext = createContext<NameContextType | undefined>(undefined);
+const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export const NameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [name, setName] = useState<string>("");
+interface DataProviderProps {
+  children: ReactNode;
+}
+
+export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+  const [name, setName] = useState("Bhaktiaji Ilham");
 
   return (
-    <NameContext.Provider value={{ name, setName }}>
+    <DataContext.Provider value={{ name, setName }}>
       {children}
-    </NameContext.Provider>
+    </DataContext.Provider>
   );
 };
 
-export const useName = () => {
-  const context = useContext(NameContext);
+export const useDataContext = (): DataContextType => {
+  const context = useContext(DataContext);
   if (!context) {
-    throw new Error('useName must be used within a NameProvider');
+    throw new Error("useDataContext must be used within a DataProvider");
   }
   return context;
 };

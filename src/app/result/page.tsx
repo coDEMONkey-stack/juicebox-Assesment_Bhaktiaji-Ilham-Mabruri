@@ -24,9 +24,9 @@ export default function Home() {
 
   return (
     <>
-      <LayoutLanding>
-        <LandingResult />
-      </LayoutLanding>
+        <LayoutLanding>  
+          <LandingResult />
+        </LayoutLanding>
     </>
   );
 }
