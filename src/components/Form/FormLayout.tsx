@@ -74,7 +74,6 @@ const FormLayout: React.FC<FormLayoutProps> = ({ type, placeholder, nextPage, on
                     </span>
                 </Link>
             </div>
-            <p>{type === "text" ? inputValue : ''}</p>
             <div className="relative px-8 sm:px-50">
                 {errorMessage && (
                     <p className="text-red sm:-mt-13 -mt-10 text-md sm:text-xl">{errorMessage}</p>
